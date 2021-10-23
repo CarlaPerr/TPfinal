@@ -13,4 +13,10 @@ class Producto:
 #Retornar True si es asi y False de lo contrario.
 #Buscar por el nombre y distinguir mayusculas de minusculas. 
 
-   
+  def coincide(self, filtro):
+      if filtro in self.nombre:
+          return True
+      else:
+          return False
+
+
