@@ -48,7 +48,34 @@ Menú del Stock:
             else:
                 print("{0} no es una opción válida".format(opcion))
 
-def salir(self):
+ #Solicitar un nombre, marca, precio para agregar un nuevo producto.
+    def nuevo_producto(self):
+        nombre = input("Ingrese el nombre del producto: ")
+        marca = input("Ingrese la marca del producto: ")
+        precio = input("Ingrese el precio del producto: ")
+        self.stock.producto_nuevo(nombre, marca, precio)
+        print("Su Producto ha sido cargado correctamente.")
+        
+ #Solicitar el nombre del producto a modificar, busca el producto y le modifica la marca y el precio. 
+    def modificar_producto(self):
+        nombre = input("Ingrese el nombre del prodcuto a modificar: ")
+        marca = input("Ingrese la nueva marca del prodcuto: ")
+        precio = input("Ingrese el nuevo precio del prodcuto: ")
+        if marca:
+            self.stock.modificar_marca(nombre, marca)
+        if precio:
+            self.stock.modificar_precio(nombre, precio)
+
+ #Solicita una busqueda y muestra el producto que coincide, si es que existe. 
+    def buscar_producto(self):
+        filtro = input("Buscar: ")
+        Producto = self.stock.buscar(filtro)
+        if Producto:
+            self.productos(Producto)
+        else:
+            print("Ningun producto coincide con la búsqueda")
+
+    def salir(self):
         '''Muestra un mensaje y sale del sistema'''
         print("Gracias por utilizar el sistema.")
         sys.exit(0)
